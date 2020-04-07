@@ -1,5 +1,5 @@
 import 'package:flutter_driver/flutter_driver.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 
 void main(){
   group('flutter reverse app test',(){
@@ -8,11 +8,13 @@ void main(){
 
     setUpAll(()async{
       driver = await FlutterDriver.connect();
+      await Future.delayed(Duration(seconds: 10));
+
     });
 
     tearDownAll(()async{
         if(driver != null){
-          driver.close();
+          driver?.close();
         }
     });
     var textField = find.byType("TextField");
